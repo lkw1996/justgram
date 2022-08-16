@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const goToMain = () => {
+    navigate("/main");
+  };
+
   return (
     <div className="flex-center container">
       <div className="login-container">
@@ -24,7 +31,12 @@ function Login() {
               />
             </div>
             <div className="flex-center button-wrapper">
-              <button id="login-btn" className="login-button" type="submit">
+              <button
+                id="login-btn"
+                className="login-button"
+                type="submit"
+                onClick={goToMain}
+              >
                 로그인
               </button>
             </div>
