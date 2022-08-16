@@ -1,11 +1,25 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./Login.css";
 
 function Login() {
+  //  Input 값 저장을위한 state
+  const [userId, setUserId] = useState("");
+  const [userPw, setUserPw] = useState("");
+
   const navigate = useNavigate();
 
   const goToMain = () => {
     navigate("/main");
+  };
+
+  // 사용자 입력 데이터 저장
+  const handleIdInput = (e) => {
+    setUserId(e.target.value);
+  };
+
+  const handlePwInput = (e) => {
+    setUserPw(e.target.value);
   };
 
   return (
@@ -21,6 +35,7 @@ function Login() {
                 id="id-input"
                 className="login-input"
                 placeholder="전화번호, 사용자 이름 또는 이메일"
+                onChange={handleIdInput}
               />
             </div>
             <div className="flex-center login-wrapper">
@@ -28,6 +43,7 @@ function Login() {
                 id="pw-input"
                 className="login-input"
                 placeholder="비밀번호"
+                onChange={handlePwInput}
               />
             </div>
             <div className="flex-center button-wrapper">
