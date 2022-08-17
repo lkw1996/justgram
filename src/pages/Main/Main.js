@@ -63,8 +63,8 @@ function Main() {
                 ainworld님 외 10명이 좋아합니다.
               </div>
               <div className="feed-comment-list padding-10">
-                {commentList.map((comment) => {
-                  return <li>{comment}</li>;
+                {commentList.map((comment, i) => {
+                  return <li key={i}>{comment}</li>;
                 })}
               </div>
               <div>42분전</div>
