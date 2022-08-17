@@ -22,6 +22,16 @@ function Login() {
     setUserPw(e.target.value);
   };
 
+  const validateInput = (userId, userPw) => {
+    let isValidated = false;
+
+    if (userId.includes("@") && userPw.length >= 5) {
+      isValidated = true;
+    }
+
+    return isValidated;
+  };
+
   return (
     <div className="flex-center container">
       <div className="login-container">
@@ -52,6 +62,11 @@ function Login() {
                 className="login-button"
                 type="submit"
                 onClick={goToMain}
+                style={
+                  validateInput(userId, userPw)
+                    ? { background: "lightskyblue" }
+                    : { background: "#cde9f4" }
+                }
               >
                 로그인
               </button>
