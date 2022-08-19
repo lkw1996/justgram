@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Comment from "./Comment";
 
 const Feed = () => {
   const value = useRef();
@@ -45,7 +46,16 @@ const Feed = () => {
           </div>
           <div className="feed-comment-list padding-10">
             {commentList.map((comment) => {
-              return <li key={comment.id}>{comment.content}</li>;
+              return (
+                <li key={comment.id}>
+                  <Comment
+                    id={comment.id}
+                    content={comment.content}
+                    writer={"익명"}
+                    createdAt={comment.createAt || "2022-01-01"}
+                  />
+                </li>
+              );
             })}
           </div>
           <div>42분전</div>
