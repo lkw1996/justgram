@@ -1,24 +1,35 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Comment from "./Comment";
 
-const Feed = () => {
+const Feed = ({ feedData }) => {
   const value = useRef();
   const [id, setId] = useState(1);
-  const [commentList, setCommentList] = useState([
-    {
-      id: 0,
-      content: "쪽팔리네",
-    },
-  ]);
+  const [commentList, setCommentList] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/comments.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setCommentList(data.comments);
+      });
+  }, []);
 
   const addComment = () => {
     setId(id + 1);
     const newComment = {
       id: id,
       content: value.current.value,
+      createdAt: new Date().toLocaleString(),
     };
 
+    value.current.value = "";
     setCommentList([...commentList, newComment]);
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addComment();
+    }
   };
 
   return (
@@ -31,10 +42,10 @@ const Feed = () => {
           <div>...</div>
         </div>
         <div className="to-do feed-image">
-          <img
-            className="feed-img"
-            src="https://images.unsplash.com/photo-1659434322358-72fd6d1e74ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1315&q=80"
-          />
+          <img className="feed-img" src={feedData.feedImages[0].imgeUrl} />
+        </div>
+        <div>
+          <span>{feedData.content}</span>
         </div>
         <div className="to-do feed-menu padding-10">
           <div>왼쪽 아이콘</div>
@@ -52,7 +63,7 @@ const Feed = () => {
                     id={comment.id}
                     content={comment.content}
                     writer={"익명"}
-                    createdAt={comment.createAt || "2022-01-01"}
+                    createdAt={comment.createdAt || "2022-01-01"}
                   />
                 </li>
               );
@@ -64,6 +75,7 @@ const Feed = () => {
               className="comment-write-input"
               placeholder="댓글달기..."
               ref={value}
+              onKeyDown={onKeyDown}
             />
             <button className="comment-write-button" onClick={addComment}>
               게시

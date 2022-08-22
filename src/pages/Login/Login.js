@@ -32,6 +32,22 @@ function Login() {
     return isValidated;
   };
 
+  // const loginHandler = (e) => {
+  //   e.preventDefault();
+  //   fetch("http://auth.jaejun.me:10010/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       email: userId,
+  //       password: userPw,
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((result) => console.log(result));
+  // };
+
   return (
     <div className="flex-center container">
       <div className="login-container">

@@ -1,0 +1,37 @@
+{
+  "feedData": [
+    {
+      "feedId": 1,
+      "username": "canon_mj",
+      "feedImages": [
+        {
+          "imageId": 105,
+          "imageUrl": "https://images.unsplash.com/photo-1659434322358-72fd6d1e74ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1315&q=8"
+        }
+      ],
+      "content": "인생 쉽지않네.."
+    },
+    {
+      "feedId": 2,
+      "username": "canon_mj",
+      "feedImages": [
+        {
+          "imageId": 106,
+          "imageUrl": "https://images.unsplash.com/photo-1659434322358-72fd6d1e74ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1315&q=8"
+        }
+      ],
+      "content": "인생 쉽지않네.."
+    },
+    {
+      "feedId": 3,
+      "username": "canon_mj",
+      "feedImages": [
+        {
+          "imageId": 107,
+          "imageUrl": "https://images.unsplash.com/photo-1659434322358-72fd6d1e74ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1315&q=8"
+        }
+      ],
+      "content": "인생 쉽지않네.."
+    }
+  ]
+}

@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Main.scss";
 
 import Feed from "./Feed";
 import instaLogo from "../../assets/images/logo.png";
 
 function Main() {
+  const [feeds, setFeeds] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/feeds.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setFeeds(data.feedData);
+      });
+  }, []);
   return (
     <>
       <div className="to-do header-wrapper">
@@ -32,7 +41,9 @@ function Main() {
       </div>
       <div className="flex-center">
         <div className="to-do contents-wrapper">
-          <Feed />
+          {feeds.map((feed) => {
+            return <Feed key={feed.feedId} feedData={feed} />;
+          })}
         </div>
       </div>
     </>
